@@ -1,0 +1,37 @@
+snippet ff
+	fflush(${1:stderr});${2}
+snippet sw
+	switch (${1:/* statement */})
+	{
+	  case ${2:}:
+	    break;
+	  case ${3:}:
+	    break;
+	  case ${4:}:
+	    break;
+	  default:
+	    break;
+	}
+snippet un
+	union ${1:name}
+	{
+	  ${2:/* data */}
+	};
+snippet dox
+	/**
+	* ${1:doc}
+	*
+	* @param ${2:param 1} ${3:INOUT} ${4:desc}
+	* @param ${5:param 2} ${6:INOUT} ${7:desc}
+	* @param ${8:param 4} ${9:INOUT} ${10:desc}
+	* @param ${11:param 5} ${12:INOUT} ${13:desc}
+	*
+	* @return ${14:desc}
+	*/
+snippet aprtiter
+	int i;
+	apr_table_entry_t *e = (apr_table_entry_t *)apr_table_elts(${1})->elts;
+	for (i = 0; i < apr_table_elts(${1})->nelts; i++) {
+	  ${2}
+	}
+

@@ -1,0 +1,75 @@
+snippet doc
+	#
+	# Description:   Tests the ${1:...}
+	#
+	# Author:         
+	#
+	${2}
+
+snippet includes
+	INCLUDE HOSTS_AND_PORTS
+	INCLUDE ALLOW_RES_HEADER
+
+snippet er
+	_EXPECT ERROR "${1}"
+snippet ex
+	_EXPECT EXEC "${1}"
+snippet eh
+	_EXPECT headers "${1}"
+snippet eb
+	_EXPECT body "${1}"
+snippet mh
+	_MATCH headers "${1:header}=${2:(.*)}" ${3:VAR}
+snippet mb
+	_MATCH body "${1:(.*)}" ${3:VAR}
+snippet setcookie
+	__Set-Cookie: ${1:cookie}=${2:value}
+snippet mscdid
+	_MATCH headers "SCDID=([^;]+)" SCDID
+snippet get
+	__GET /${1:LOCATION} HTTP/1.1
+	__Host: ${2:HOST}
+	__User-Agent: curl
+	__
+	_WAIT
+	_CLOSE
+	${3}
+snippet post
+	__POST /${1:LOCATION} HTTP/1.1
+	__Host: ${2:HOST}
+	__User-Agent: curl
+	__Content-Type: application/x-www-form-urlencoded
+	__Content-Length: AUTO
+	__
+	__${3:DATA}
+	_WAIT
+	_CLOSE
+	${4}
+snippet client
+	CLIENT
+	_REQ ${1:HOST} ${2:SSL:}${3:PORT}
+	${4}
+	END
+snippet res
+	_RES
+	_WAIT
+	__HTTP/1.1 200 Ok
+	__Content-Length: AUTO
+	__Content-Type: text/plain
+	__
+	__${1:==AS1-OK==}
+	_CLOSE
+snippet server
+	SERVER ${1:PORT}
+	_RES
+	_WAIT
+	__HTTP/1.1 200 Ok
+	__Content-Length: AUTO
+	__Content-Type: text/plain
+	__
+	__${2:==AS1-OK==}
+	_CLOSE
+	END
+snippet finally
+	BLOCK FINALLY
+	END
