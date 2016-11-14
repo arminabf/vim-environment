@@ -7,7 +7,6 @@ function usage() {
   echo "$script <C|python>"
 }
 
-
 files=/tmp/files.tmp
 
 lang=$1
@@ -15,7 +14,6 @@ case $lang in
   "python")
     ext="py"
     ctags_opts="--python-kinds=-cfmvi -L $files"
-    #ctags_opts="-R"
     ;;
   "C")
     ext="[c,h]"
@@ -56,4 +54,3 @@ echo "  $cwd/GRTAGS created"
 echo "  $cwd/GTAGS created"
 
 rm $files
-
