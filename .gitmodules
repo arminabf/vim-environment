@@ -1,0 +1,3 @@
+[submodule "YCM-Generator"]
+	path = YCM-Generator
+	url = git@github.com:rdnetto/YCM-Generator.git
