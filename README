@@ -1,0 +1,20 @@
+To generate YCM configuration use YCM-Generator, for example
+
+> cd /path/to/project
+> /path/to/YCM-Generator/config_gen.py -x c -b make .
+
+Please note that the clang package must be available on your system (same version as
+for the compilation of YCM has been used!)
+
+If pre-built binaries are used use the "-c" option to state the path to clang/clang++, for example 
+
+> /path/to/YCM-Generator/config_gen.py -x c -b make -c /path/to/clang .
+
+On Ubuntu 16.04, you can get them following
+
+> mkdir -p ~/bin/clang && cd ~/bin/clang
+> wget -qO - http://llvm.org/releases/3.9.0/clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz | tar xJ --strip 1
+
+
+
+
