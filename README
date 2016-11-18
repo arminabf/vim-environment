@@ -1,4 +1,4 @@
-### Installation
+# Installation
 
 1. build vim by usage of ./build-vim.sh
 2. link configuration into your home direcotry
@@ -6,7 +6,14 @@
 4. start vim and run :BundleInstall
 5. link snippets directory (see snippets/README)
 
-### YouCompleteMe 
+# YouCompleteMe setup
+
+## Compilation
+
+> cd ~/.vim/bundle/YouCompleteMe
+> ./install.sh --clang-completer
+
+## YCM configuration generation
 
 To generate YCM configuration use YCM-Generator, for example
 
