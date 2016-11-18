@@ -66,24 +66,28 @@ let Tlist_Show_One_File = 1
 Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
 " helptext: start easymotion <Leader><Leader>w
 "#######################################################
-" last tested Git version running with clang-3.4 is 31918411ff6d207d1e2f4cb2fa87a8c3f6bf5998
+" normally,
 "
-" for (re-)compilation, do
+" > cd ~/.vim/bundle/YouCompleteMe
+" > ./install.sh --clang-completer
+"
+" should work. otherwise, try following to compile the sources
+"
 " > rm -rf ~/bin/ycm_build
 " > mkdir -p ~/bin/ycm_build/llvm_root_dir
 " > cd ~/bin/ycm_build/llvm_root_dir
 " > wget -qO - http://llvm.org/releases/3.2/clang+llvm-3.2-x86-linux-ubuntu-12.04.tar.gz | tar xz --strip 1
+" > wget -qO - http://llvm.org/releases/3.9.0/clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xJ | tar xz --strip 1
 " > cd ~/bin/ycm_build
 " > cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/ycm_build/llvm_root_dir ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
 " > make
 "
-" no worries about the errors at the end of the compilation in conjunction
-" with gmock
+" no worries about the errors at the end of the compilation in conjunction with gmock
 "
 " to generate ycm_extra_conf, do
 " > cd <projdir>
 " > ~/bin/YCM-Generator/config_gen.py .
-"Bundle 'https://github.com/Valloric/YouCompleteMe.git'
+Bundle 'https://github.com/Valloric/YouCompleteMe.git'
 "let g:ycm_confirm_extra_conf = 0
 "#######################################################
 Bundle 'https://github.com/tpope/vim-pathogen.git'
