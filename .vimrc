@@ -114,9 +114,11 @@ call tcomment#DefineType('htt', '# %s')
 " trigger snipmate and jump to next placeholder          <c-j>
 " jump over placeholder without deleting default value   <TAB>
 " list snippets                                          <c-r><TAB>
-Bundle 'https://github.com/msanders/snipmate.vim.git'
+Bundle 'https://github.com/MarcWeber/vim-addon-mw-utils'
+Bundle 'https://github.com/tomtom/tlib_vim'
+Bundle 'https://github.com/garbas/vim-snipmate'
 " change triggering snippets as it overlaps with completion of YouCompleteMe
-ino <silent> <c-j> <esc>a<c-r>=TriggerSnippet()<cr>
+ino <silent> <c-j> <esc>a<c-r>=snipMate#TriggerSnippet()<cr>
 " add custom snippet search directory
 let g:snippets_dir = "~/.vim/bundle/snipmate.vim/snippets, ~/.vim/snippets"
 "#######################################################
