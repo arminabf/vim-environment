@@ -27,7 +27,7 @@ set wildmode=list:longest,full
 
 " auto expand tabs to spaces
 set tabstop=2
-au FileType python setl tabstop=4
+au FileType python setl tabstop=4 noexpandtab
 au FileType make setl noexpandtab
 set shiftwidth=2
 set expandtab
@@ -50,6 +50,12 @@ call vundle#rc()
 "#######################################################
 "Bundle 'https://github.com/davidhalter/jedi-vim'
 "#######################################################
+Bundle 'https://github.com/benmills/vimux.git'
+" # run command with current buffer as argument
+" :VimuxRunCommand "<command>  " . bufname("%")
+" # run last command
+map <Leader>c :VimuxRunLastCommand<CR>
+"#######################################################
 Bundle 'https://github.com/nvie/vim-flake8.git'
 "#######################################################
 Bundle 'https://github.com/tpope/vim-fugitive.git'
@@ -64,7 +70,7 @@ nmap <silent> <F2> :TlistToggle<CR>
 let Tlist_Show_One_File = 1
 "#######################################################
 Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
-" helptext: start easymotion <Leader><Leader>w
+" start easymotion    <Leader><Leader>w
 "#######################################################
 " normally,
 "
@@ -117,10 +123,11 @@ call tcomment#DefineType('htt', '# %s')
 Bundle 'https://github.com/MarcWeber/vim-addon-mw-utils'
 Bundle 'https://github.com/tomtom/tlib_vim'
 Bundle 'https://github.com/garbas/vim-snipmate'
+Bundle 'https://github.com/honza/vim-snippets'
 " change triggering snippets as it overlaps with completion of YouCompleteMe
 ino <silent> <c-j> <esc>a<c-r>=snipMate#TriggerSnippet()<cr>
 " add custom snippet search directory
-let g:snippets_dir = "~/.vim/bundle/snipmate.vim/snippets, ~/.vim/snippets"
+let g:snippets_dir = "~/.vim/bundle/vim-snipmate/snippets, ~/.vim/snippets"
 "#######################################################
 Bundle 'https://github.com/vim-scripts/ShowMarks.git'
 let showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
