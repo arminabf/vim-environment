@@ -27,7 +27,7 @@ set wildmode=list:longest,full
 
 " auto expand tabs to spaces
 set tabstop=2
-au FileType python setl tabstop=4 noexpandtab
+au FileType python setl tabstop=4
 au FileType make setl noexpandtab
 set shiftwidth=2
 set expandtab
@@ -48,13 +48,17 @@ endif
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 "#######################################################
-"Bundle 'https://github.com/davidhalter/jedi-vim'
+Bundle 'https://github.com/tpope/vim-obsession.git'
+"#######################################################
+Bundle 'https://github.com/chrisbra/unicode.vim.git'
 "#######################################################
 Bundle 'https://github.com/benmills/vimux.git'
 " # run command with current buffer as argument
 " :VimuxRunCommand "<command>  " . bufname("%")
 " # run last command
-map <Leader>c :VimuxRunLastCommand<CR>
+map <Leader>c :VimuxPromptCommand<CR>
+map <Leader>cc :VimuxRunLastCommand<CR>
+autocmd Filetype htt nnoremap <buffer> <Leader>c :call VimuxRunCommand('./httest ' . bufname('%'))<CR>
 "#######################################################
 Bundle 'https://github.com/nvie/vim-flake8.git'
 "#######################################################
@@ -75,20 +79,7 @@ Bundle 'https://github.com/Lokaltog/vim-easymotion.git'
 " normally,
 "
 " > cd ~/.vim/bundle/YouCompleteMe
-" > ./install.sh --clang-completer
-"
-" should work. otherwise, try following to compile the sources
-"
-" > rm -rf ~/bin/ycm_build
-" > mkdir -p ~/bin/ycm_build/llvm_root_dir
-" > cd ~/bin/ycm_build/llvm_root_dir
-" > wget -qO - http://llvm.org/releases/3.2/clang+llvm-3.2-x86-linux-ubuntu-12.04.tar.gz | tar xz --strip 1
-" > wget -qO - http://llvm.org/releases/3.9.0/clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xJ | tar xz --strip 1
-" > cd ~/bin/ycm_build
-" > cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=~/ycm_build/llvm_root_dir ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
-" > make
-"
-" no worries about the errors at the end of the compilation in conjunction with gmock
+" > python3 install.py --clang-completer
 "
 " to generate ycm_extra_conf, do
 " > cd <projdir>
@@ -114,7 +105,7 @@ autocmd FileType fuf inoremap <buffer> <Tab> <C-n>
 Bundle 'https://github.com/tomtom/tcomment_vim'
 " toggle comments for single line   gcc
 " toggle comments for visual line   gc
-call tcomment#DefineType('htt', '# %s')
+call tcomment#type#Define('htt', '# %s')
 "#######################################################
 " see :help snipMate-remap
 " trigger snipmate and jump to next placeholder          <c-j>
@@ -179,7 +170,8 @@ Bundle "https://github.com/godlygeek/tabular"
 "#######################################################
 
 " # code formatting (http://llvm.org/apt)
-au FileType c map <Leader>r :pyf ~/bin/clang-format.py<CR>
+" https://llvm.org/svn/llvm-project/cfe/trunk/tools/clang-format/clang-format.py
+au FileType c map <Leader>r :py3f ~/bin/clang-format.py<CR>
 "au FileType python map <Leader>r :!autopep8 -i %<CR>:e<CR>
 " pip install autopep8
 " # use gq to clean up code
